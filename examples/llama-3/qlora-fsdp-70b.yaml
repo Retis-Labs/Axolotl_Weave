@@ -1,54 +1,85 @@
-base_model: casperhansen/llama-3-70b-fp16
-model_type: LlamaForCausalLM
-tokenizer_type: AutoTokenizer  # PreTrainedTokenizerFast
+base_model: meta-llama/Meta-Llama-3.1-70B
 
-load_in_8bit: false
 load_in_4bit: true
 strict: false
 
-datasets:
-  - path: tatsu-lab/alpaca
-    type: alpaca
-dataset_prepared_path: last_run_prepared
-val_set_size: 0.05
-output_dir: ./outputs/out/qlora-llama3-70b
+save_safetensors: true
 
-adapter: qlora
-lora_model_dir:
+datasets:
+  - path: datasets/sharegpt_code-end-to-end-cyber.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/sharegpt_code-end-to-end-general.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/sharegpt_WRN-Chapter-1.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/sharegpt_WRN-Chapter-2.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/dolphin-coder-codegen-sharegpt2.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/dolphin-coder-translate-sharegpt2.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/dolphin201-sharegpt2.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/m-a-p_Code-Feedback-sharegpt-unfiltered.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/openhermes200k_unfiltered.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/Orca-Math-resort-unfiltered.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/SystemChat_filtered_sharegpt.jsonl
+    type: sharegpt
+    conversation: chatml
+  - path: datasets/SystemChat_multilingual_sharegpt.jsonl
+    type: sharegpt
+    conversation: chatml
+
+chat_template: chatml
+
+dataset_prepared_path: last_run_prepared
+val_set_size: 0.005
+output_dir: ./QDora-llama3.1-70b-Cyber
 
 sequence_len: 512
-sample_packing: false
+sample_packing: true
 pad_to_sequence_len: true
-
-lora_r: 8
+adapter: qlora
+lora_r: 16
 lora_alpha: 16
 lora_dropout: 0.05
 lora_target_modules:
 lora_target_linear: true
 lora_fan_in_fan_out:
+peft_use_dora: true
 
-wandb_project:
+wandb_project: QDora-llama3.1-70b
 wandb_entity:
 wandb_watch:
 wandb_name:
 wandb_log_model:
 
-gradient_accumulation_steps: 4
+gradient_accumulation_steps: 8
 micro_batch_size: 1
-num_epochs: 4
+num_epochs: 3
 optimizer: adamw_torch
 lr_scheduler: cosine
-learning_rate: 0.00001
+learning_rate: 2e-5
 
 train_on_inputs: false
 group_by_length: false
-bf16: auto
-fp16:
+bf16: true
 tf32: false
 
-gradient_checkpointing: true
-gradient_checkpointing_kwargs:
-  use_reentrant: true
+gradient_checkpointing: unsloth
 early_stopping_patience:
 resume_from_checkpoint:
 local_rank:
@@ -58,10 +89,7 @@ flash_attention: true
 
 warmup_steps: 10
 evals_per_epoch: 4
-eval_table_size:
 saves_per_epoch: 1
-debug:
-deepspeed:
 weight_decay: 0.0
 fsdp:
   - full_shard
@@ -76,5 +104,3 @@ fsdp_config:
   fsdp_transformer_layer_cls_to_wrap: LlamaDecoderLayer
   fsdp_state_dict_type: FULL_STATE_DICT
   fsdp_sharding_strategy: FULL_SHARD
-special_tokens:
-  pad_token: <|end_of_text|>

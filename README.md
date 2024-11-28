@@ -1,10 +1,6 @@
-# Axolotl
+# Axolotl Weave
 
-![tests](https://github.com/axolotl-ai-cloud/axolotl/actions/workflows/tests.yml/badge.svg)
-![tests-nightly](https://github.com/axolotl-ai-cloud/axolotl/actions/workflows/tests-nightly.yml/badge.svg)
-![multigpu-semi-weekly tests](https://github.com/axolotl-ai-cloud/axolotl/actions/workflows/multi-gpu-e2e.yml/badge.svg)
-
-Axolotl is a tool designed to streamline the fine-tuning of various AI models, offering support for multiple configurations and architectures.
+Axolotl Weave is a tool designed to streamline the fine-tuning of various AI models, offering support for multiple configurations and architectures.
 
 Features:
 - Train various Huggingface models such as llama, pythia, falcon, mpt
@@ -16,10 +12,6 @@ Features:
 - Easily run with Docker locally or on the cloud
 - Log results and optionally checkpoints to wandb or mlflow
 - And more!
-
-<a href="https://www.phorm.ai/query?projectId=e315ba4a-4e14-421f-ab05-38a1f9076f25">
-  <img alt="phorm.ai" src="https://img.shields.io/badge/Phorm-Ask_AI-%23F2777A.svg?&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNSIgaGVpZ2h0PSI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik00LjQzIDEuODgyYTEuNDQgMS40NCAwIDAgMS0uMDk4LjQyNmMtLjA1LjEyMy0uMTE1LjIzLS4xOTIuMzIyLS4wNzUuMDktLjE2LjE2NS0uMjU1LjIyNmExLjM1MyAxLjM1MyAwIDAgMS0uNTk1LjIxMmMtLjA5OS4wMTItLjE5Mi4wMTQtLjI3OS4wMDZsLTEuNTkzLS4xNHYtLjQwNmgxLjY1OGMuMDkuMDAxLjE3LS4xNjkuMjQ2LS4xOTFhLjYwMy42MDMgMCAwIDAgLjItLjEwNi41MjkuNTI5IDAgMCAwIC4xMzgtLjE3LjY1NC42NTQgMCAwIDAgLjA2NS0uMjRsLjAyOC0uMzJhLjkzLjkzIDAgMCAwLS4wMzYtLjI0OS41NjcuNTY3IDAgMCAwLS4xMDMtLjIuNTAyLjUwMiAwIDAgMC0uMTY4LS4xMzguNjA4LjYwOCAwIDAgMC0uMjQtLjA2N0wyLjQzNy43MjkgMS42MjUuNjcxYS4zMjIuMzIyIDAgMCAwLS4yMzIuMDU4LjM3NS4zNzUgMCAwIDAtLjExNi4yMzJsLS4xMTYgMS40NS0uMDU4LjY5Ny0uMDU4Ljc1NEwuNzA1IDRsLS4zNTctLjA3OUwuNjAyLjkwNkMuNjE3LjcyNi42NjMuNTc0LjczOS40NTRhLjk1OC45NTggMCAwIDEgLjI3NC0uMjg1Ljk3MS45NzEgMCAwIDEgLjMzNy0uMTRjLjExOS0uMDI2LjIyNy0uMDM0LjMyNS0uMDI2TDMuMjMyLjE2Yy4xNTkuMDE0LjMzNi4wMy40NTkuMDgyYTEuMTczIDEuMTczIDAgMCAxIC41NDUuNDQ3Yy4wNi4wOTQuMTA5LjE5Mi4xNDQuMjkzYTEuMzkyIDEuMzkyIDAgMCAxIC4wNzguNThsLS4wMjkuMzJaIiBmaWxsPSIjRjI3NzdBIi8+CiAgPHBhdGggZD0iTTQuMDgyIDIuMDA3YTEuNDU1IDEuNDU1IDAgMCAxLS4wOTguNDI3Yy0uMDUuMTI0LS4xMTQuMjMyLS4xOTIuMzI0YTEuMTMgMS4xMyAwIDAgMS0uMjU0LjIyNyAxLjM1MyAxLjM1MyAwIDAgMS0uNTk1LjIxNGMtLjEuMDEyLS4xOTMuMDE0LS4yOC4wMDZsLTEuNTYtLjEwOC4wMzQtLjQwNi4wMy0uMzQ4IDEuNTU5LjE1NGMuMDkgMCAuMTczLS4wMS4yNDgtLjAzM2EuNjAzLjYwMyAwIDAgMCAuMi0uMTA2LjUzMi41MzIgMCAwIDAgLjEzOS0uMTcyLjY2LjY2IDAgMCAwIC4wNjQtLjI0MWwuMDI5LS4zMjFhLjk0Ljk0IDAgMCAwLS4wMzYtLjI1LjU3LjU3IDAgMCAwLS4xMDMtLjIwMi41MDIuNTAyIDAgMCAwLS4xNjgtLjEzOC42MDUuNjA1IDAgMCAwLS4yNC0uMDY3TDEuMjczLjgyN2MtLjA5NC0uMDA4LS4xNjguMDEtLjIyMS4wNTUtLjA1My4wNDUtLjA4NC4xMTQtLjA5Mi4yMDZMLjcwNSA0IDAgMy45MzhsLjI1NS0yLjkxMUExLjAxIDEuMDEgMCAwIDEgLjM5My41NzIuOTYyLjk2MiAwIDAgMSAuNjY2LjI4NmEuOTcuOTcgMCAwIDEgLjMzOC0uMTRDMS4xMjIuMTIgMS4yMy4xMSAxLjMyOC4xMTlsMS41OTMuMTRjLjE2LjAxNC4zLjA0Ny40MjMuMWExLjE3IDEuMTcgMCAwIDEgLjU0NS40NDhjLjA2MS4wOTUuMTA5LjE5My4xNDQuMjk1YTEuNDA2IDEuNDA2IDAgMCAxIC4wNzcuNTgzbC0uMDI4LjMyMloiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTQuMDgyIDIuMDA3YTEuNDU1IDEuNDU1IDAgMCAxLS4wOTguNDI3Yy0uMDUuMTI0LS4xMTQuMjMyLS4xOTIuMzI0YTEuMTMgMS4xMyAwIDAgMS0uMjU0LjIyNyAxLjM1MyAxLjM1MyAwIDAgMS0uNTk1LjIxNGMtLjEuMDEyLS4xOTMuMDE0LS4yOC4wMDZsLTEuNTYtLjEwOC4wMzQtLjQwNi4wMy0uMzQ4IDEuNTU5LjE1NGMuMDkgMCAuMTczLS4wMS4yNDgtLjAzM2EuNjAzLjYwMyAwIDAgMCAuMi0uMTA2LjUzMi41MzIgMCAwIDAgLjEzOS0uMTcyLjY2LjY2IDAgMCAwIC4wNjQtLjI0MWwuMDI5LS4zMjFhLjk0Ljk0IDAgMCAwLS4wMzYtLjI1LjU3LjU3IDAgMCAwLS4xMDMtLjIwMi41MDIuNTAyIDAgMCAwLS4xNjgtLjEzOC42MDUuNjA1IDAgMCAwLS4yNC0uMDY3TDEuMjczLjgyN2MtLjA5NC0uMDA4LS4xNjguMDEtLjIyMS4wNTUtLjA1My4wNDUtLjA4NC4xMTQtLjA5Mi4yMDZMLjcwNSA0IDAgMy45MzhsLjI1NS0yLjkxMUExLjAxIDEuMDEgMCAwIDEgLjM5My41NzIuOTYyLjk2MiAwIDAgMSAuNjY2LjI4NmEuOTcuOTcgMCAwIDEgLjMzOC0uMTRDMS4xMjIuMTIgMS4yMy4xMSAxLjMyOC4xMTlsMS41OTMuMTRjLjE2LjAxNC4zLjA0Ny40MjMuMWExLjE3IDEuMTcgMCAwIDEgLjU0NS40NDhjLjA2MS4wOTUuMTA5LjE5My4xNDQuMjk1YTEuNDA2IDEuNDA2IDAgMCAxIC4wNzcuNTgzbC0uMDI4LjMyMloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=">
-</a>
 
 <table>
 <tr>
@@ -61,32 +53,12 @@ Features:
   - [Common Errors 🧰](#common-errors-)
     - [Tokenization Mismatch b/w Inference \& Training](#tokenization-mismatch-bw-inference--training)
   - [Debugging Axolotl](#debugging-axolotl)
-  - [Need help? 🙋](#need-help-)
   - [Badge ❤🏷️](#badge-️)
   - [Community Showcase](#community-showcase)
   - [Contributing 🤝](#contributing-)
-  - [Sponsors 🤝❤](#sponsors-)
-      - [💎 Diamond Sponsors - Contact directly](#-diamond-sponsors---contact-directly)
-      - [🥇 Gold Sponsors - $5000/mo](#-gold-sponsors---5000mo)
-      - [🥈 Silver Sponsors - $1000/mo](#-silver-sponsors---1000mo)
-      - [🥉 Bronze Sponsors - $500/mo](#-bronze-sponsors---500mo)
 
 </td>
 <td>
-
-<div align="center">
-  <img src="image/axolotl.png" alt="axolotl" width="160">
-  <div>
-    <p>
-      <b>Axolotl provides a unified repository for fine-tuning <br />a variety of AI models with ease</b>
-    </p>
-    <p>
-      Go ahead and Axolotl questions!!
-    </p>
-    <img src="https://github.com/axolotl-ai-cloud/axolotl/actions/workflows/pre-commit.yml/badge.svg?branch=main" alt="pre-commit">
-    <img alt="PyTest Status" src="https://github.com/axolotl-ai-cloud/axolotl/actions/workflows/tests.yml/badge.svg?branch=main">
-  </div>
-</div>
 
 </td>
 </tr>
@@ -121,11 +93,11 @@ Features:
 
 Get started with Axolotl in just a few steps! This quickstart guide will walk you through setting up and running a basic fine-tuning task.
 
-**Requirements**: Python >=3.10 and Pytorch >=2.1.1.
+**Requirements**: Python >=3.10 and Pytorch >=2.3.1.
 
 ```bash
-git clone https://github.com/axolotl-ai-cloud/axolotl
-cd axolotl
+git clone https://github.com/Retis-Labs/Axolotl_Weave.git
+cd axolotl_weave
 
 pip3 install packaging ninja
 pip3 install -e '.[flash-attn,deepspeed]'
@@ -146,51 +118,11 @@ accelerate launch -m axolotl.cli.inference examples/openllama-3b/lora.yml \
 # gradio
 accelerate launch -m axolotl.cli.inference examples/openllama-3b/lora.yml \
     --lora_model_dir="./outputs/lora-out" --gradio
-
-# remote yaml files - the yaml config can be hosted on a public URL
-# Note: the yaml config must directly link to the **raw** yaml
-accelerate launch -m axolotl.cli.train https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/openllama-3b/lora.yml
 ```
 
 ## Advanced Setup
 
 ### Environment
-
-#### Docker
-
-  ```bash
-  docker run --gpus '"all"' --rm -it winglian/axolotl:main-latest
-  ```
-
-  Or run on the current files for development:
-
-  ```sh
-  docker compose up -d
-  ```
-
->[!Tip]
-> If you want to debug axolotl or prefer to use Docker as your development environment, see the [debugging guide's section on Docker](docs/debugging.qmd#debugging-with-docker).
-
-  <details>
-
-  <summary>Docker advanced</summary>
-
-  A more powerful Docker command to run would be this:
-
-  ```bash
-docker run --privileged --gpus '"all"' --shm-size 10g --rm -it --name axolotl --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 --mount type=bind,src="${PWD}",target=/workspace/axolotl -v ${HOME}/.cache/huggingface:/root/.cache/huggingface winglian/axolotl:main-latest
-  ```
-
-  It additionally:
-  * Prevents memory issues when running e.g. deepspeed (e.g. you could hit SIGBUS/signal 7 error) through `--ipc` and `--ulimit` args.
-  * Persists the downloaded HF data (models etc.) and your modifications to axolotl code through `--mount`/`-v` args.
-  * The `--name` argument simply makes it easier to refer to the container in vscode (`Dev Containers: Attach to Running Container...`) or in your terminal.
-  * The `--privileged` flag gives all capabilities to the container.
-  * The `--shm-size 10g` argument increases the shared memory size. Use this if you see `exitcode: -7` errors using deepspeed.
-
-  [More information on nvidia website](https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html#setincshmem)
-
-  </details>
 
 #### Conda/Pip venv
   1. Install python >=**3.10**
@@ -208,67 +140,6 @@ docker run --privileged --gpus '"all"' --shm-size 10g --rm -it --name axolotl --
         ```
         Get the token at huggingface.co/settings/tokens
 
-#### Cloud GPU
-
-For cloud GPU providers that support docker images, use [`winglian/axolotl-cloud:main-latest`](https://hub.docker.com/r/winglian/axolotl-cloud/tags)
-
-- on Latitude.sh use this [direct link](https://latitude.sh/blueprint/989e0e79-3bf6-41ea-a46b-1f246e309d5c)
-- on JarvisLabs.ai use this [direct link](https://jarvislabs.ai/templates/axolotl)
-- on RunPod use this [direct link](https://runpod.io/gsc?template=v2ickqhz9s&ref=6i7fkpdz)
-
-#### Bare Metal Cloud GPU
-
-##### LambdaLabs
-
-  <details>
-
-  <summary>Click to Expand</summary>
-
-  1. Install python
-  ```bash
-  sudo apt update
-  sudo apt install -y python3.10
-
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-  sudo update-alternatives --config python # pick 3.10 if given option
-  python -V # should be 3.10
-
-  ```
-
-  2. Install pip
-  ```bash
-  wget https://bootstrap.pypa.io/get-pip.py
-  python get-pip.py
-  ```
-
-  3. Install Pytorch https://pytorch.org/get-started/locally/
-
-  4. Follow instructions on quickstart.
-
-  5. Run
-  ```bash
-  pip3 install protobuf==3.20.3
-  pip3 install -U --ignore-installed requests Pillow psutil scipy
-  ```
-
-  6. Set path
-  ```bash
-  export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-  ```
-  </details>
-
-##### GCP
-
-<details>
-
-<summary>Click to Expand</summary>
-
-Use a Deeplearning linux OS with cuda and pytorch installed. Then follow instructions on quickstart.
-
-Make sure to run the below to uninstall xla.
-```bash
-pip uninstall -y torch_xla[tpu]
-```
 
 </details>
 
@@ -282,69 +153,6 @@ Use the below instead of the install method in QuickStart.
 pip3 install -e '.'
 ```
 More info: [mac.md](/docs/mac.qmd)
-
-#### Google Colab
-
-Please use this example [notebook](examples/colab-notebooks/colab-axolotl-example.ipynb).
-
-#### Launching on public clouds via SkyPilot
-To launch on GPU instances (both on-demand and spot instances) on 7+ clouds (GCP, AWS, Azure, OCI, and more), you can use [SkyPilot](https://skypilot.readthedocs.io/en/latest/index.html):
-
-```bash
-pip install "skypilot-nightly[gcp,aws,azure,oci,lambda,kubernetes,ibm,scp]"  # choose your clouds
-sky check
-```
-
-Get the [example YAMLs](https://github.com/skypilot-org/skypilot/tree/master/llm/axolotl) of using Axolotl to finetune `mistralai/Mistral-7B-v0.1`:
-```
-git clone https://github.com/skypilot-org/skypilot.git
-cd skypilot/llm/axolotl
-```
-
-Use one command to launch:
-```bash
-# On-demand
-HF_TOKEN=xx sky launch axolotl.yaml --env HF_TOKEN
-
-# Managed spot (auto-recovery on preemption)
-HF_TOKEN=xx BUCKET=<unique-name> sky spot launch axolotl-spot.yaml --env HF_TOKEN --env BUCKET
-```
-
-#### Launching on public clouds via dstack
-To launch on GPU instance (both on-demand and spot instances) on public clouds (GCP, AWS, Azure, Lambda Labs, TensorDock, Vast.ai, and CUDO), you can use [dstack](https://dstack.ai/).
-
-Write a job description in YAML as below:
-
-```yaml
-# dstack.yaml
-type: task
-
-image: winglian/axolotl-cloud:main-20240429-py3.11-cu121-2.2.2
-
-env:
-  - HUGGING_FACE_HUB_TOKEN
-  - WANDB_API_KEY
-
-commands:
-  - accelerate launch -m axolotl.cli.train config.yaml
-
-ports:
-  - 6006
-
-resources:
-  gpu:
-    memory: 24GB..
-    count: 2
-```
-
-then, simply run the job with `dstack run` command. Append `--spot` option if you want spot instance. `dstack run` command will show you the instance with cheapest price across multi cloud services:
-
-```bash
-pip install dstack
-HUGGING_FACE_HUB_TOKEN=xxx WANDB_API_KEY=xxx dstack run . -f dstack.yaml # --spot
-```
-
-For further and fine-grained use cases, please refer to the official [dstack documents](https://dstack.ai/docs/) and the detailed description of [axolotl example](https://github.com/dstackai/dstack/tree/master/examples/fine-tuning/axolotl) on the official repository.
 
 ### Dataset
 
@@ -716,23 +524,4 @@ run our unit & integration tests, troubleshooting community issues, and providin
 consider sponsoring the project via [GitHub Sponsors](https://github.com/sponsors/OpenAccess-AI-Collective),
 [Ko-fi](https://ko-fi.com/axolotl_ai) or reach out directly to
 [wing@openaccessaicollective.org](mailto:wing@openaccessaicollective.org).
-
----
-
-#### 💎 Diamond Sponsors - [Contact directly](mailto:wing@openaccessaicollective.org)
-
----
-
-#### 🥇 Gold Sponsors - $5000/mo
-
----
-
-#### 🥈 Silver Sponsors - $1000/mo
-
----
-
-#### 🥉 Bronze Sponsors - $500/mo
-
- - [JarvisLabs.ai](https://jarvislabs.ai)
-
 ---

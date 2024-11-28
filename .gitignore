@@ -182,3 +182,9 @@ submit.sh
 
 typings/
 out/
+dataset_tools/
+EVA-Qwen2.5-7B-QLoRA-v0.1/
+EVA-Qwen2.5-7B-QLoRA-v0.2/
+EVA-Qwen2.5-7B-SFFT-v0.1/
+EVA-Qwen2.5-32B-QLoRA-v0.0/
+datasets/*
