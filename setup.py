@@ -1,9 +1,7 @@
 """setup.py for axolotl"""
 
 import platform
-import re
 from importlib.metadata import PackageNotFoundError, version
-
 from setuptools import find_packages, setup
 
 
@@ -29,37 +27,10 @@ def parse_requirements():
                 _install_requires.append(line)
 
     try:
-        xformers_version = [req for req in _install_requires if "xformers" in req][0]
-        if "Darwin" in platform.system():
-            # don't install xformers on MacOS
-            _install_requires.pop(_install_requires.index(xformers_version))
-        else:
-            # detect the version of torch already installed
-            # and set it so dependencies don't clobber the torch version
-            torch_version = version("torch")
-            _install_requires.append(f"torch=={torch_version}")
-
-            version_match = re.match(r"^(\d+)\.(\d+)(?:\.(\d+))?", torch_version)
-            if version_match:
-                major, minor, patch = version_match.groups()
-                major, minor = int(major), int(minor)
-                patch = (
-                    int(patch) if patch is not None else 0
-                )  # Default patch to 0 if not present
-            else:
-                raise ValueError("Invalid version format")
-
-            if (major, minor) >= (2, 3):
-                if patch == 0:
-                    _install_requires.pop(_install_requires.index(xformers_version))
-                    _install_requires.append("xformers>=0.0.26.post1")
-            elif (major, minor) >= (2, 2):
-                _install_requires.pop(_install_requires.index(xformers_version))
-                _install_requires.append("xformers>=0.0.25.post1")
-            else:
-                _install_requires.pop(_install_requires.index(xformers_version))
-                _install_requires.append("xformers>=0.0.23.post1")
-
+        # detect the version of torch already installed
+        # and set it so dependencies don't clobber the torch version
+        torch_version = version("torch")
+        _install_requires.append(f"torch=={torch_version}")
     except PackageNotFoundError:
         pass
 

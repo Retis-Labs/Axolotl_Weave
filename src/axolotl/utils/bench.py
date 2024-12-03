@@ -3,7 +3,7 @@ import functools
 
 import pynvml
 import torch
-from pynvml.nvml import NVMLError
+from pynvml import NVMLError
 
 
 def check_cuda_device(default_value):

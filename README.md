@@ -66,24 +66,24 @@ Features:
 
 ## Axolotl supports
 
-|             | fp16/fp32 | lora | qlora | gptq | gptq w/flash attn | flash attn | xformers attn |
-|-------------|:----------|:-----|-------|------|-------------------|------------|--------------|
-| llama       | ✅         | ✅    | ✅     | ✅             | ✅                 | ✅          | ✅            |
-| Mistral     | ✅         | ✅    | ✅     | ✅             | ✅                 | ✅          | ✅            |
-| Mixtral-MoE | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          | ❓            |
-| Mixtral8X22 | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          | ❓            |
-| Pythia      | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          | ❓            |
-| cerebras    | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          | ❓            |
-| btlm        | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          | ❓            |
-| mpt         | ✅         | ❌    | ❓     | ❌             | ❌                 | ❌          | ❓            |
-| falcon      | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          | ❓            |
-| gpt-j       | ✅         | ✅    | ✅     | ❌             | ❌                 | ❓          | ❓            |
-| XGen        | ✅         | ❓    | ✅     | ❓             | ❓                 | ❓          | ✅            |
-| phi         | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          | ❓            |
-| RWKV        | ✅         | ❓    | ❓     | ❓             | ❓                 | ❓          | ❓            |
-| Qwen        | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          | ❓            |
-| Gemma       | ✅         | ✅    | ✅     | ❓             | ❓                 | ✅          | ❓            |
-| Jamba       | ✅         | ✅    | ✅     | ❓             | ❓                 | ✅          | ❓            |
+|             | fp16/fp32 | lora | qlora | gptq | gptq w/flash attn | flash attn |
+|-------------|:----------|:-----|-------|------|-------------------|------------|
+| llama       | ✅         | ✅    | ✅     | ✅             | ✅                 | ✅          |
+| Mistral     | ✅         | ✅    | ✅     | ✅             | ✅                 | ✅          |
+| Mixtral-MoE | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          |
+| Mixtral8X22 | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          |
+| Pythia      | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          |
+| cerebras    | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          |
+| btlm        | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          |
+| mpt         | ✅         | ❌    | ❓     | ❌             | ❌                 | ❌          |
+| falcon      | ✅         | ✅    | ✅     | ❌             | ❌                 | ❌          |
+| gpt-j       | ✅         | ✅    | ✅     | ❌             | ❌                 | ❓          |
+| XGen        | ✅         | ❓    | ✅     | ❓             | ❓                 | ❓          |
+| phi         | ✅         | ✅    | ✅     | ❓             | ❓                 | ❓          |
+| RWKV        | ✅         | ❓    | ❓     | ❓             | ❓                 | ❓          |
+| Qwen        | ✅         | ✅    | ✅     | ❓             | ❓                 | ✅          |
+| Gemma       | ✅         | ✅    | ✅     | ❓             | ❓                 | ✅          |
+| Jamba       | ✅         | ✅    | ✅     | ❓             | ❓                 | ✅          |
 
 ✅: supported
 ❌: not supported
@@ -91,9 +91,9 @@ Features:
 
 ## Quickstart ⚡
 
-Get started with Axolotl in just a few steps! This quickstart guide will walk you through setting up and running a basic fine-tuning task.
+Get started with Axolotl Weave in just a few steps! This quickstart guide will walk you through setting up and running a basic fine-tuning task.
 
-**Requirements**: Python >=3.10 and Pytorch >=2.3.1.
+**Requirements**: Python >=3.10 and Pytorch >=2.4.1.
 
 ```bash
 git clone https://github.com/Retis-Labs/Axolotl_Weave.git
@@ -156,9 +156,7 @@ More info: [mac.md](/docs/mac.qmd)
 
 ### Dataset
 
-Axolotl supports a variety of dataset formats.  It is recommended to use a JSONL.  The schema of the JSONL depends upon the task and the prompt template you wish to use.  Instead of a JSONL, you can also use a HuggingFace dataset with columns for each JSONL field.
-
-See [the documentation](https://axolotl-ai-cloud.github.io/axolotl/docs/dataset-formats/) for more information on how to use different dataset formats.
+Axolotl Weave supports a variety of dataset formats.  It is recommended to use a JSONL.  The schema of the JSONL depends upon the task and the prompt template you wish to use.  Instead of a JSONL, you can also use a HuggingFace dataset with columns for each JSONL field.
 
 ### Config
 
@@ -429,10 +427,6 @@ Additionally, look into upgrading your system RAM which should be simpler than G
 
 Try set `fp16: true`
 
-> NotImplementedError: No operator found for `memory_efficient_attention_forward` ...
-
-Try to turn off xformers.
-
 > accelerate config missing
 
 It's safe to ignore it.
@@ -455,37 +449,19 @@ If you decode a prompt constructed by axolotl, you might see spaces between toke
 
 Having misalignment between your prompts during training and inference can cause models to perform very poorly, so it is worth checking this.  See [this blog post](https://hamel.dev/notes/llm/finetuning/05_tokenizer_gotchas.html) for a concrete example.
 
-## Debugging Axolotl
+## Debugging Axolotl Weave
 
-See [this debugging guide](docs/debugging.qmd) for tips on debugging Axolotl, along with an example configuration for debugging with VSCode.
-
-## Need help? 🙋
-
-Join our [Discord server](https://discord.gg/HhrNrHJPRb) where we our community members can help you.
-
-Need dedicated support? Please contact us at [✉️wing@openaccessaicollective.org](mailto:wing@openaccessaicollective.org) for dedicated support options.
+See [this debugging guide](docs/debugging.qmd) for tips on debugging Axolotl Weave, along with an example configuration for debugging with VSCode.
 
 ## Badge ❤🏷️
 
-Building something cool with Axolotl? Consider adding a badge to your model card.
+Building something cool with Axolotl Weave? Consider adding a badge to your model card.
 
 ```markdown
-[<img src="https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/image/axolotl-badge-web.png" alt="Built with Axolotl" width="200" height="32"/>](https://github.com/axolotl-ai-cloud/axolotl)
+[<img src="https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/image/axolotl-badge-web.png" alt="Built with Axolotl Weave" width="200" height="32"/>](https://github.com/axolotl-ai-cloud/axolotl)
 ```
 
-[<img src="https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/image/axolotl-badge-web.png" alt="Built with Axolotl" width="200" height="32"/>](https://github.com/axolotl-ai-cloud/axolotl)
-
-## Community Showcase
-
-Check out some of the projects and models that have been built using Axolotl! Have a model you'd like to add to our Community Showcase? Open a PR with your model.
-
-Open Access AI Collective
-- [Minotaur 13b](https://huggingface.co/openaccess-ai-collective/minotaur-13b-fixed)
-- [Manticore 13b](https://huggingface.co/openaccess-ai-collective/manticore-13b)
-- [Hippogriff 30b](https://huggingface.co/openaccess-ai-collective/hippogriff-30b-chat)
-
-PocketDoc Labs
-- [Dan's PersonalityEngine 13b LoRA](https://huggingface.co/PocketDoc/Dans-PersonalityEngine-13b-LoRA)
+[<img src="https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/image/axolotl-badge-web.png" alt="Built with Axolotl Weave" width="200" height="32"/>](https://github.com/axolotl-ai-cloud/axolotl)
 
 ## Contributing 🤝
 
