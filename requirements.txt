@@ -1,13 +1,13 @@
 --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/
 packaging==23.2
 peft==0.13.0
-transformers==4.45.1
+transformers==4.45.2
 tokenizers>=0.20.1
 bitsandbytes==0.44.1
 accelerate==0.34.2
 datasets==2.21.0
 deepspeed==0.15.4
-pydantic==2.6.3
+pydantic==2.10.3
 addict
 fschat
 fire
