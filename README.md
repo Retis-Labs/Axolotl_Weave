@@ -96,11 +96,14 @@ Get started with Axolotl Weave in just a few steps! This quickstart guide will w
 **Requirements**: Python >=3.10 and Pytorch >=2.4.1.
 
 ```bash
-git clone https://github.com/Retis-Labs/Axolotl_Weave.git
+git clone --recursive https://github.com/Retis-Labs/Axolotl_Weave.git
 cd axolotl_weave
 
 pip3 install packaging ninja
 pip3 install -e '.[flash-attn,deepspeed]'
+
+cd FastChat
+pip3 install -e "."
 ```
 
 ### Usage
